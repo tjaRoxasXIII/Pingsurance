@@ -16,7 +16,8 @@ ActiveRecord::Schema.define(version: 2021_02_15_201527) do
   enable_extension "plpgsql"
 
   create_table "leads", force: :cascade do |t|
-    t.string "name"
+    t.string "first_name"
+    t.string "last_name"
     t.string "phone_number"
     t.date "date_texted"
     t.datetime "created_at", precision: 6, null: false

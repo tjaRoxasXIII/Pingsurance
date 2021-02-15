@@ -1,8 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Leads</h1>
+<h1>Pingsurance</h1>
+<%= link_to 'New Lead', new_lead_path %>
 
-<table>
+<table class="table table-striped" style="width: 75%">
   <thead>
     <tr>
       <th>Name</th>
@@ -15,12 +16,12 @@
   <tbody>
     <% @leads.each do |lead| %>
       <tr>
-        <td><%= lead.name %></td>
+        <td><%= lead.full_name %></td>
         <td><%= lead.phone_number %></td>
         <td><%= lead.date_texted %></td>
         <td><%= link_to 'Show', lead %></td>
         <td><%= link_to 'Edit', edit_lead_path(lead) %></td>
-        <td><%= link_to 'Destroy', lead, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Remove from List', lead, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +29,3 @@
 
 <br>
 
-<%= link_to 'New Lead', new_lead_path %>
