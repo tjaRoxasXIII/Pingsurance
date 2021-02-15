@@ -1,0 +1,32 @@
+<%= form_with(model: lead) do |form| %>
+  <% if lead.errors.any? %>
+    <div id="error_explanation" class="modal">
+      <h2><%= pluralize(lead.errors.count, "error") %> prohibited this lead from being saved:</h2>
+
+      <ul>
+        <% lead.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :phone_number %>
+    <%= form.text_field :phone_number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date_texted %>
+    <%= form.date_select :date_texted %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
