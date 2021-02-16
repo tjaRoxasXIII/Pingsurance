@@ -1,7 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Pingsurance</h1>
-<%= link_to 'New Lead', new_lead_path %>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newLeadModal">
+  <i class="fas fa-user-plus"></i> Add New Lead
+</button>
+<%= render "new" %>
 
 <table class="table table-striped" style="width: 75%">
   <thead>
