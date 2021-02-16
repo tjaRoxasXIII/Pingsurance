@@ -12,7 +12,6 @@
       <th>Name</th>
       <th>Phone number</th>
       <th>Date texted</th>
-      <th colspan="3"></th>
     </tr>
   </thead>
 
@@ -22,9 +21,6 @@
         <td><%= lead.full_name %></td>
         <td><%= lead.phone_number %></td>
         <td><%= lead.date_texted %></td>
-        <td><%= link_to 'Show', lead %></td>
-        <td><%= link_to 'Edit', edit_lead_path(lead) %></td>
-        <td><%= link_to 'Remove from List', lead, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

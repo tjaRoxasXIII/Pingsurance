@@ -2,7 +2,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="newLeadModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="newLeadModalLabel">Create a Lead</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -10,17 +10,18 @@
       <div class="modal-body">
         <%= form_for :lead do |f| %>
         <%= f.label :first_name %>
-        <%= f.text_field :first_name %>
+        <%= f.text_field :first_name, :required => true %>
         <%= f.label :last_name %>
-        <%= f.text_field :last_name %>
+        <%= f.text_field :last_name, :required => true %>
         <%= f.label :phone_number %>
-        <%= f.text_field :phone_number %>
-        <%= f.submit %>
+        <%= f.text_field :phone_number, :required => true %>
+        
+        <br />
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <%= f.submit "Create Lead", :class => 'btn btn-primary'  %>
+        </div>
         <% end %>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
