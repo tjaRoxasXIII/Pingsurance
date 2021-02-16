@@ -22,11 +22,12 @@ class LeadsController < ApplicationController
   # POST /leads or /leads.json
   def create
     @lead = Lead.new(lead_params)
+    @lead.phone_number = @lead.format_phone_number
     @lead.date_texted = DateTime.now.getlocal
 
     respond_to do |format|
       if @lead.save
-        format.html { redirect_to leads_url, notice: "Lead was successfully created." }
+        format.html { redirect_to leads_url, notice: "New Lead '" + @lead.first_name + "' was successfully created." }
         format.json { render :show, status: :created, location: @lead }
       else
         format.html { render :new, status: :unprocessable_entity }
