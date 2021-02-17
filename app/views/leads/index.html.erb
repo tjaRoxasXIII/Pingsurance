@@ -1,5 +1,5 @@
-
 <h1><strong>Pingsurance</strong></h1>
+
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newLeadModal">
   <i class="fas fa-user-plus"></i> Add New Lead
 </button>
@@ -20,8 +20,8 @@
     <tbody>
       <% @leads.each do |lead| %>
         <tr>
-          <td><%= lead.full_name %></td>
-          <td><%= lead.phone_number %></td>
+          <td ><%=lead.full_name%></td>
+          <td><%= lead.format_phone_number %></td>
           <td><%= lead.date_texted %></td>
         </tr>
       <% end %>
@@ -33,7 +33,9 @@
 
 <% flash.each do |key, message| %>
   <div class="alert">
-    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-    <p id="notice"><%= notice %></p>
+    <p id="notice">
+      <%= notice %>
+      <button class="closebtn" onclick="this.parentElement.style.display='none';">&times;</button> 
+    </p>
   </div>
 <% end %>

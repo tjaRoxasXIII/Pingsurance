@@ -15,13 +15,11 @@
         <%= f.text_field :last_name, :required => true %>
         <%= f.label :phone_number %>
         <%= f.text_field :phone_number, :required => true %>
-        <%= f.label :message %>
-        <%= f.text_area :message, required: true, cols: "30", rows: "5", style: "resize: none", value: "Thank you for contacting us regarding your insurance needs!  Are you seeking coverage on yourself or someone else in your family?" %>
         
         <br />
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-          <%= f.submit "Create & Send", :class => 'btn btn-primary'  %>
+          <%= f.submit "Update", :class => 'btn btn-primary'  %>
         </div>
         <% end %>
       </div>
