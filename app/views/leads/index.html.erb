@@ -1,11 +1,5 @@
-<% flash.each do |key, message| %>
-  <div class="alert">
-    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-    <p id="notice"><%= notice %></p>
-  </div>
-<% end %>
 
-<h1>Pingsurance</h1>
+<h1><strong>Pingsurance</strong></h1>
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newLeadModal">
   <i class="fas fa-user-plus"></i> Add New Lead
 </button>
@@ -13,26 +7,33 @@
 
 <br/><br/>
 
-<table class="table table-striped" style="width: 75%">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Phone number</th>
-      <th>Date texted</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @leads.each do |lead| %>
+<div style="margin: auto; width: 75%; height: 400px; border: 3px solid black; overflow: scroll">
+  <table class="table table-striped" style="width: 100%">
+    <thead>
       <tr>
-        <td><%= lead.full_name %></td>
-        <td><%= lead.phone_number %></td>
-        <td><%= lead.date_texted %></td>
-        <td><%= link_to 'Remove from List', lead, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Name</th>
+        <th>Phone number</th>
+        <th>Date texted</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
+    <tbody>
+      <% @leads.each do |lead| %>
+        <tr>
+          <td><%= lead.full_name %></td>
+          <td><%= lead.phone_number %></td>
+          <td><%= lead.date_texted %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 <br>
 
+
+<% flash.each do |key, message| %>
+  <div class="alert">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+    <p id="notice"><%= notice %></p>
+  </div>
+<% end %>
