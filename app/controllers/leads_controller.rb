@@ -1,3 +1,4 @@
+require 'twilio-ruby'
 class LeadsController < ApplicationController
   before_action :set_lead, only: %i[ show edit update destroy ]
 
@@ -24,14 +25,13 @@ class LeadsController < ApplicationController
     @lead = Lead.new(lead_params)
     @lead.phone_number = @lead.format_phone_number
     @lead.date_texted = DateTime.now.getlocal
-
+    
     respond_to do |format|
       if @lead.save
         format.html { redirect_to root_path, notice: "New Lead '" + @lead.first_name + "' was successfully created." }
-        # format.json { render :show, status: :created, location: @lead }
+        notify()
       else
         format.html { render :new, status: :unprocessable_entity }
-        # format.json { render json: @lead.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -68,4 +68,12 @@ class LeadsController < ApplicationController
     def lead_params
       params.require(:lead).permit(:first_name, :last_name, :phone_number, :date_texted)
     end
+
+    def notify
+      account_sid = ENV['TWILIO_ACCOUNT_SID']
+      auth_token = ENV['TWILIO_AUTH_TOKEN']
+      client = Twilio::REST::Client.new(account_sid, auth_token)
+      message = client.messages.create from: '+14157809076', to: '+18018508653', body: 'Learning to send SMS you are.'
+  end
+
 end
