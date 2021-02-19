@@ -27,6 +27,8 @@ gem 'twilio-ruby', '~> 3.12'
 
 gem 'dotenv-rails'
 
+gem 'jquery-rails'
+
 gem 'pry'
 
 # Use Active Storage variant

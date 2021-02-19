@@ -1,6 +1,7 @@
 require 'twilio-ruby'
 class LeadsController < ApplicationController
   before_action :set_lead, only: %i[ show edit update destroy ]
+  protect_from_forgery with: :null_sessions
 
   # GET /leads or /leads.json
   def index
@@ -55,21 +56,19 @@ class LeadsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_lead
       @lead = Lead.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def lead_params
       params.require(:lead).permit(:first_name, :last_name, :phone_number, :message)
     end
-
+      # TWILIO SMS integration method for dispatching texts
     def notify(custom_message, phone_number)
       account_sid = ENV['TWILIO_ACCOUNT_SID']
       auth_token = ENV['TWILIO_AUTH_TOKEN']
       client = Twilio::REST::Client.new(account_sid, auth_token)
-      message = client.messages.create from: '+14157809076', to: '+1' + phone_number, body: custom_message
-  end
+      message = client.messages.create from: ENV['TWILIO_PHONE_NUMBER'], to: '+1' + phone_number, body: custom_message
+    end
 
 end
